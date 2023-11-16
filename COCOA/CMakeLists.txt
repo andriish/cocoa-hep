@@ -13,7 +13,7 @@ message(STATUS "COCOA: COCOA_ENABLE_TESTS=${COCOA_ENABLE_TESTS}")
 #----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
-# Compilers
+# Compiler flags
 add_compile_options("$<$<COMPILE_LANG_AND_ID:CXX,AppleClang,Clang>:-Wc++17-extensions;-Wno-shadow>")
 add_compile_options("$<$<COMPILE_LANG_AND_ID:CXX,GNU>:-Wall;-Wno-sign-compare>")
 message(STATUS "COCOA: CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}" )
@@ -169,7 +169,7 @@ Track_var.hh
 TruthRecordGraph.hh)
 list(TRANSFORM headers PREPEND "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 
-
+#----------------------------------------------------------------------------
 #---Create a shared library with geneated dictionary
 ROOT_GENERATE_DICTIONARY(G__Event LINKDEF LinkDef.h )
 add_library(Event SHARED G__Event.cxx)
@@ -178,7 +178,9 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
   target_link_options(Event PRIVATE "LINKER:-z,defs")
   target_link_options(Event PRIVATE "LINKER:-z,now")
 endif()
+#----------------------------------------------------------------------------
 
+#----------------------------------------------------------------------------
 #---Create COCOA executable
 add_executable(COCOA COCOAMain.cc ${sources} ${headers})
 target_include_directories(COCOA PRIVATE ${PROJECT_SOURCE_DIR}/include)
@@ -193,6 +195,7 @@ target_link_libraries(COCOA PRIVATE
                       Event
                       ${CMAKE_DL_LIBS}
                      )
+#----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -225,6 +228,7 @@ foreach(_script ${COCOA_SCRIPTS})
     COPYONLY
     )
 endforeach()
+#----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
 # Install the targets
@@ -232,11 +236,19 @@ endforeach()
 install(TARGETS COCOA DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS Event DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES ${PROJECT_BINARY_DIR}/libEvent_rdict.pcm ${PROJECT_BINARY_DIR}/libEvent.rootmap DESTINATION  ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/config/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/config/ COMPONENT data)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pflow_configuration/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/pflow_configuration/ COMPONENT data)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tracking_configuration/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/tracking_configuration/ COMPONENT data)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/init_vis.mac ${CMAKE_CURRENT_SOURCE_DIR}/vis.mac  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA COMPONENT data)
+#----------------------------------------------------------------------------
 
+#----------------------------------------------------------------------------
+# Testing
+#
 if (COCOA_ENABLE_TESTS)
   ENABLE_TESTING()
   add_subdirectory(test)
 endif()
-
+#----------------------------------------------------------------------------
 
 
