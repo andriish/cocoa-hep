@@ -9,17 +9,17 @@
 #  FASTJET_LIBRARY_DIRS (not cached)
 
 find_path(FASTJET_INCLUDE_DIR fastjet/version.hh
-          HINTS /usr/include /usr/local/include $ENV{FASTJET_ROOT_DIR}/include ${FASTJET_ROOT_DIR}/include)
+          HINTS $ENV{FASTJET_HOME}/include ${FASTJET_HOME}/include /usr/include /usr/local/include $ENV{FASTJET_ROOT_DIR}/include ${FASTJET_ROOT_DIR}/include)
 
 find_library(FASTJET_LIBRARY NAMES fastjet
-             HINTS /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
+             HINTS $ENV{FASTJET_HOME}/lib ${FASTJET_HOME}/lib /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
 
 find_library(FASTJETPLUGINS_LIBRARY NAMES fastjetplugins
-             HINTS /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
+             HINTS $ENV{FASTJET_HOME}/lib ${FASTJET_HOME}/lib /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
 
 
 find_library(FASTJETTOOLS_LIBRARY NAMES fastjettools
-             HINTS /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
+             HINTS $ENV{FASTJET_HOME}/lib ${FASTJET_HOME}/lib /usr/local/lib /usr/lib /usr/lib64 $ENV{FASTJET_ROOT_DIR}/lib ${FASTJET_ROOT_DIR}/lib)
 
 # handle the QUIETLY and REQUIRED arguments and set FASTJET_FOUND to TRUE if
 # all listed variables are TRUE

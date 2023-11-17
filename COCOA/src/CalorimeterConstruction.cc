@@ -52,7 +52,7 @@ CalorimeterConstruction::CalorimeterConstruction(G4LogicalVolume *expHallLV, boo
 }
 CalorimeterConstruction::~CalorimeterConstruction()
 {
-
+	;
 }
 char *CalorimeterConstruction::Name_creation(char *name, int low_layer, int high_layer)
 {

@@ -20,13 +20,11 @@ message(STATUS "COCOA: CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}" )
 message(STATUS "COCOA: CMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS} CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}=${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}}" )
 #----------------------------------------------------------------------------
 
-
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
 # You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
 # to build a batch mode only executable
 #
-
 if(WITH_GEANT4_UIVIS)
   find_package(Geant4 REQUIRED ui_all vis_all)
 else()
@@ -250,5 +248,4 @@ if (COCOA_ENABLE_TESTS)
   add_subdirectory(test)
 endif()
 #----------------------------------------------------------------------------
-
 
