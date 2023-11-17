@@ -237,6 +237,7 @@ install(FILES ${PROJECT_BINARY_DIR}/libEvent_rdict.pcm ${PROJECT_BINARY_DIR}/lib
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/config/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/config/ COMPONENT data)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pflow_configuration/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/pflow_configuration/ COMPONENT data)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tracking_configuration/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/tracking_configuration/ COMPONENT data)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/macro/  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA/macro/ COMPONENT data)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/init_vis.mac ${CMAKE_CURRENT_SOURCE_DIR}/vis.mac  DESTINATION ${CMAKE_INSTALL_DATADIR}/COCOA COMPONENT data)
 #----------------------------------------------------------------------------
 
