@@ -22,7 +22,7 @@ jobs:
 
     steps:
 
-      - name: checkout repo
+      - name: checkout repo wf
         uses: actions/checkout@v3
 
       - name: Build

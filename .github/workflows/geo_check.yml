@@ -22,7 +22,7 @@ jobs:
 
     steps:
 
-      - name: checkout repo
+      - name: checkout repo gc
         uses: actions/checkout@v3
 
       - name: Build
