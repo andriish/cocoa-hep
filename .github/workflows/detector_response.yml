@@ -22,14 +22,17 @@ jobs:
 
     steps:
 
-      - name: checkout repo
+      - name: checkout repo gc
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Build
         run: |
           ln -s -f /usr/lib64/libGL.so.1 /usr/lib64/libGL.so
           ln -s -f /usr/lib64/libexpat.so.1 /usr/lib64/libexpat.so
           for libTag in Xmu ICE Xext X11 Xt SM; do ln -s -f /usr/lib64/lib${libTag}.so.6 /usr/lib64/lib${libTag}.so; done
+          cat -n COCOA/include/OutputRunAction.hh 
           mkdir -p COCOA/build
           cd COCOA/build
           cmake ..
