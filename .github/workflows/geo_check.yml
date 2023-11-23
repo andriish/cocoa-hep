@@ -24,6 +24,8 @@ jobs:
 
       - name: checkout repo gc
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Build
         run: |
